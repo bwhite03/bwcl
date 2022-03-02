@@ -6,13 +6,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="lmast"
+        class="lmask"
       />
     </div>
   </body>,
   "container": <div>
     <div
-      class="lmast"
+      class="lmask"
     />
   </div>,
   "debug": [Function],
