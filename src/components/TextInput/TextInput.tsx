@@ -1,11 +1,13 @@
 import React from "react";
 
+export type TextInputType = "text" | "number";
+
 export interface TextInputProps {
   id: string;
   name: string;
   label: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => string;
-  type: string;
+  type: TextInputType;
   placeholder?: string;
   value: string | number;
   error?: string;

@@ -39,6 +39,51 @@ isValid({});
 
 formatDate('1/1/2020 2:00 PM');
 //returns '1/1/2022'
-
-
 ```
+
+TextInput example usage:
+
+```js
+import { TextInput } from "bwcl";
+
+return (
+  <TextInput
+    id="someId"
+    name="somename"
+    label="somelabel"
+    placeholder="someplaceholder"
+    onChange={(e) => console.log(e.target.value)}
+    type="text"
+    value="somevalue"
+    error="some error"
+  />
+);
+```
+
+SelectField example usage:
+
+```js
+import { SelectField } from "bwcl";
+
+const states = [
+  { abbr: "AL", name: "Alabama" },
+  { abbr: "TN", name: "Tennessee" },
+];
+
+return (
+  <SelectField
+    id="someid"
+    name="somename"
+    label="somelabel"
+    displayField="name"
+    valueField="abbr"
+    onChange={(e) => console.log(e.target.value)}
+    emptyMsg="Please select a state"
+    data={states}
+    error="This field is required"
+  />
+);
+```
+
+note: The error field in both components is used for when the form validation fails, you can
+send in a unique error message to each element of your form
