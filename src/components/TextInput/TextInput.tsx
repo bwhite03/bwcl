@@ -1,4 +1,5 @@
 import React from "react";
+import "./textinput.css";
 
 export type TextInputType = "text" | "number";
 
@@ -15,7 +16,7 @@ export interface TextInputProps {
 }
 
 function TextInput(props: TextInputProps) {
-  let wrapperClass = "form-group";
+  let wrapperClass = "bwcl-textinput";
   if (props.error && length > 0) {
     wrapperClass += " has-error";
   }

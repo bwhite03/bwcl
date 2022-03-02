@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="form-group"
+        class="bwcl-select"
       >
         <label
           for="test"
@@ -42,7 +42,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="form-group"
+      class="bwcl-select"
     >
       <label
         for="test"
@@ -135,7 +135,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="form-group"
+        class="bwcl-select"
       >
         <label
           for="test"
@@ -172,7 +172,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="form-group"
+      class="bwcl-select"
     >
       <label
         for="test"
@@ -266,7 +266,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="form-group has-error"
+        class="bwcl-select has-error"
       >
         <label
           for="test"
@@ -307,7 +307,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="form-group has-error"
+      class="bwcl-select has-error"
     >
       <label
         for="test"

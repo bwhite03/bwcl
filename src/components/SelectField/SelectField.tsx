@@ -1,4 +1,5 @@
 import React from "react";
+import "./selectfield.css";
 
 export interface SelectFieldProps<T> {
   id: string;
@@ -13,7 +14,7 @@ export interface SelectFieldProps<T> {
 }
 
 function SelectField<T>(props: SelectFieldProps<T>) {
-  let wrapperClass = "form-group";
+  let wrapperClass = "bwcl-select";
   if (props.error && props.error.length > 0) {
     wrapperClass += " has-error";
   }

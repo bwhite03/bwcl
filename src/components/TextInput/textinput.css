@@ -1,0 +1,13 @@
+.bwcl-textinput input {
+  padding: 4px 8px;
+  border-radius: 8px;
+  outline: none;
+  border: 0;
+}
+
+.bwcl-textinput,
+.alert-danger {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}

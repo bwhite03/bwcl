@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="form-group"
+        class="bwcl-textinput"
       >
         <label
           for="testId"
@@ -34,7 +34,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="form-group"
+      class="bwcl-textinput"
     >
       <label
         for="testId"
@@ -119,7 +119,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="form-group"
+        class="bwcl-textinput"
       >
         <label
           for="testId"
@@ -142,7 +142,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="form-group"
+      class="bwcl-textinput"
     >
       <label
         for="testId"
