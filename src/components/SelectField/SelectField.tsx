@@ -17,6 +17,7 @@ function SelectField<T>(props: SelectFieldProps<T>) {
   if (props.error && props.error.length > 0) {
     wrapperClass += " has-error";
   }
+
   return (
     <div className={wrapperClass}>
       <label htmlFor={props.id}>{props.label}</label>
@@ -29,15 +30,15 @@ function SelectField<T>(props: SelectFieldProps<T>) {
           <option value="0">{props.emptyMsg}</option>
           {props.data && props.data.length === 0
             ? null
-            : props.data.map((item: T, index: number) => {
+            : props.data.map((item: T, index: number) => (
                 <option
                   key={`${props.id}-${index}`}
                   // @ts-ignore
                   value={item[props.valueField]}
                 >
                   {item[props.displayField]}
-                </option>;
-              })}
+                </option>
+              ))}
         </select>
       </div>
       {props.error && <div className="alert alert-danger">{props.error}</div>}
