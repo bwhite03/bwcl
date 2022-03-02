@@ -3,10 +3,10 @@
   border-radius: 8px;
   outline: none;
   border: 0;
+  width: 100%;
 }
 
-.bwcl-textinput,
-.alert-danger {
+.bwcl-textinput .alert-danger {
   background-color: red;
   color: white;
   border-radius: 5px;
