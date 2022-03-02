@@ -42,7 +42,7 @@ function SelectField<T>(props: SelectFieldProps<T>) {
               ))}
         </select>
       </div>
-      {props.error && <div className="alert alert-danger">{props.error}</div>}
+      {props.error && <div className="alert-danger">{props.error}</div>}
     </div>
   );
 }
