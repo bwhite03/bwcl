@@ -100,3 +100,4 @@ DataGrid Todos:
 [] make columns draggable
 [] enable light and dark mode
 [✔] make DataGrid right clickable
+[]
