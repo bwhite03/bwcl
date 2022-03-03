@@ -98,3 +98,5 @@ DataGrid Todos:
 [] make columns hidden
 [] make columns filterable by the unique values that are displayed for that column
 [] make columns draggable
+[] enable light and dark mode
+[✔] make DataGrid right clickable
