@@ -12,6 +12,8 @@
 }
 
 .mikto-table thead th {
+  display: grid;
+  grid-template-columns: 1fr 20px;
   position: sticky;
   top: 0;
   padding-left: 5px;
@@ -32,13 +34,13 @@
   padding: 4px;
 }
 
-.mikto-table-row:nth-child(odd) {
+/* .mikto-table-row:nth-child(odd) {
   background-color: #aaa;
 }
 
 .mikto-table-row:nth-child(even) {
   background-color: #fff;
-}
+} */
 
 .mikto-grid-chevron {
   cursor: pointer;
@@ -53,7 +55,7 @@
   left: 0.25em;
   position: relative;
   top: 0.15em;
-  transform: rotate(135);
+  transform: rotate(135deg);
   vertical-align: top;
   width: 0.45em;
 }

@@ -90,3 +90,11 @@ send in a unique error message to each element of your form
 
 If for some reason you are using CRA and are getting an error about not being able to find source maps, add this to your .env file:
 GENERATE_SOURCEMAP=false
+
+DataGrid Todos:
+[] work on row colors based on color that might be passed in
+[] figure out how to center the column text
+[✔] make each column sortable
+[] make columns hidden
+[] make columns filterable by the unique values that are displayed for that column
+[] make columns draggable
