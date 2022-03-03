@@ -298,7 +298,8 @@ Object {
           </select>
         </div>
         <div
-          class="alert alert-danger"
+          class="alert-danger"
+          data-testid="alert"
         >
           error
         </div>
@@ -339,7 +340,8 @@ Object {
         </select>
       </div>
       <div
-        class="alert alert-danger"
+        class="alert-danger"
+        data-testid="alert"
       >
         error
       </div>

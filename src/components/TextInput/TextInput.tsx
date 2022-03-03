@@ -35,7 +35,11 @@ function TextInput(props: TextInputProps) {
           readOnly={props.readOnly}
         />
       </div>
-      {props.error && <div className="alert-danger">{props.error}</div>}
+      {props.error && (
+        <div className="alert-danger" data-testid="alert">
+          {props.error}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,53 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextInput should render correctly 1`] = `
+exports[`RippleButton should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="bwcl-textinput"
+      <button
+        class="ripple-button"
       >
-        <label
-          for="testId"
-        >
-          test
-        </label>
-        <div
-          class="field"
-        >
-          <input
-            class="form-control"
-            id="testId"
-            placeholder="test"
-            type="text"
-            value="test"
-          />
-        </div>
-      </div>
+        Click me
+        <span
+          class="ripple-button-circle"
+        />
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="bwcl-textinput"
+    <button
+      class="ripple-button"
     >
-      <label
-        for="testId"
-      >
-        test
-      </label>
-      <div
-        class="field"
-      >
-        <input
-          class="form-control"
-          id="testId"
-          placeholder="test"
-          type="text"
-          value="test"
-        />
-      </div>
-    </div>
+      Click me
+      <span
+        class="ripple-button-circle"
+      />
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
