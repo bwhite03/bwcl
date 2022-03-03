@@ -15,6 +15,7 @@ describe("Datagrid", () => {
       <DataGrid
         data={testData}
         identifier={"grid1"}
+        mode="light"
         headers={[
           {
             columnName: "id",
