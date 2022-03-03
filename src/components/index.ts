@@ -3,3 +3,4 @@ export { default as TextInput } from "./TextInput";
 export { default as SelectField } from "./SelectField";
 export { default as Spinner } from "./Spinner";
 export { default as RippleButton } from "./RippleButton";
+export { default as DataGrid } from "./Grid";
