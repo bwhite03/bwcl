@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import DataGrid from "./DataGrid";
 
@@ -18,7 +18,7 @@ describe("Datagrid", () => {
         headers={[
           {
             columnName: "id",
-            title: "10",
+            title: "id",
             visible: true,
             style: {
               textAlign: "center",
@@ -26,7 +26,8 @@ describe("Datagrid", () => {
           },
           {
             columnName: "storeName",
-            title: " name",
+            title: "name",
+            visible: true,
             style: {
               textAlign: "left",
             },
@@ -34,6 +35,7 @@ describe("Datagrid", () => {
         ]}
       />
     );
+
     expect(frag).toMatchSnapshot();
   });
 });
