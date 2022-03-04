@@ -10,7 +10,7 @@ Object {
       >
         <table
           id="grid1"
-          style="width: 100%;"
+          style="width: 100%; background-color: rgb(255, 255, 255);"
         >
           <thead>
             <tr>
@@ -108,7 +108,7 @@ Object {
     >
       <table
         id="grid1"
-        style="width: 100%;"
+        style="width: 100%; background-color: rgb(255, 255, 255);"
       >
         <thead>
           <tr>
