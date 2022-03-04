@@ -10,21 +10,14 @@ export interface ColumnProps<T> {
   headers: string[];
   checkedColumns: string[];
   handleCheckClick: (e: string, checked: boolean) => void;
-  header: TableHeader<T>;
+
   identifier: string;
   data: T[];
 }
 
 function Columns<T>(props: ColumnProps<T>) {
-  const {
-    open,
-    divId,
-    style,
-    headers,
-    checkedColumns,
-    handleCheckClick,
-    header,
-  } = props;
+  const { open, divId, style, headers, checkedColumns, handleCheckClick } =
+    props;
 
   const div = document.getElementById(divId);
 

@@ -1,0 +1,15 @@
+.mikto-table-filter-title {
+  margin-left: 8px;
+}
+
+.mikto-table-filter-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+}
+
+.mikto-table-filters-header {
+  border-bottom: 3px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 4px;
+}
