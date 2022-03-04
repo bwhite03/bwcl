@@ -50,7 +50,7 @@ Object {
           </thead>
           <tbody>
             <tr
-              class="mikto-table-row"
+              class="mikto-table-row-light"
             >
               <td
                 style="text-align: center;"
@@ -64,7 +64,7 @@ Object {
               </td>
             </tr>
             <tr
-              class="mikto-table-row"
+              class="mikto-table-row-light"
             >
               <td
                 style="text-align: center;"
@@ -78,7 +78,7 @@ Object {
               </td>
             </tr>
             <tr
-              class="mikto-table-row"
+              class="mikto-table-row-light"
             >
               <td
                 style="text-align: center;"
@@ -148,7 +148,7 @@ Object {
         </thead>
         <tbody>
           <tr
-            class="mikto-table-row"
+            class="mikto-table-row-light"
           >
             <td
               style="text-align: center;"
@@ -162,7 +162,7 @@ Object {
             </td>
           </tr>
           <tr
-            class="mikto-table-row"
+            class="mikto-table-row-light"
           >
             <td
               style="text-align: center;"
@@ -176,7 +176,7 @@ Object {
             </td>
           </tr>
           <tr
-            class="mikto-table-row"
+            class="mikto-table-row-light"
           >
             <td
               style="text-align: center;"

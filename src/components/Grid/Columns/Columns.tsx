@@ -44,6 +44,7 @@ function Columns<T>(props: ColumnProps<T>) {
               <div className="mikto-table-modal-line" key={`mc-c-${idx}`}>
                 <input
                   className="mikto-table-modal-check"
+                  data-testid={`mikto-table-check-${props.identifier}-${idx}`}
                   type="checkbox"
                   checked={amIChecked(item.title)}
                   onChange={(e) =>

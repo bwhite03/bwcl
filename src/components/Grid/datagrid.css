@@ -64,3 +64,19 @@
   border-right: 5px solid limegreen;
   background-color: limegreen;
 }
+
+.mikto-table-row-light:nth-child(even) {
+  background-color: #fff;
+}
+
+.mikto-table-row-light:nth-child(odd) {
+  background-color: #aaa;
+}
+
+.mikto-table-row-dark:nth-child(even) {
+  background-color: #000;
+}
+
+.mikto-table-row-dark:nth-child(even) {
+  background-color: #aaa;
+}
