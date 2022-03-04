@@ -5,9 +5,12 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
+      <div
+        style="width: 100%;"
+      >
         <table
           id="grid1"
+          style="width: 100%;"
         >
           <thead>
             <tr>
@@ -18,12 +21,12 @@ Object {
                 style="text-align: center;"
               >
                 <span
-                  style="width: 80%;"
+                  style="width: 80%; cursor: pointer;"
                 >
-                  10
+                  id
                 </span>
                 <span
-                  class="mikto-grid-chevron-down"
+                  class="mikto-grid-chevron down"
                   style="width: 20%; float: right; text-align: center;"
                 />
               </th>
@@ -34,29 +37,78 @@ Object {
                 style="text-align: left;"
               >
                 <span
-                  style="width: 80%;"
+                  style="width: 80%; cursor: pointer;"
                 >
-                   name
+                  name
                 </span>
                 <span
-                  class="mikto-grid-chevron-down"
+                  class="mikto-grid-chevron down"
                   style="width: 20%; float: right; text-align: center;"
                 />
               </th>
             </tr>
           </thead>
-          <tbody />
+          <tbody>
+            <tr
+              class="mikto-table-row"
+            >
+              <td
+                style="text-align: center;"
+              >
+                1
+              </td>
+              <td
+                style="text-align: left;"
+              >
+                IGA 001
+              </td>
+            </tr>
+            <tr
+              class="mikto-table-row"
+            >
+              <td
+                style="text-align: center;"
+              >
+                2
+              </td>
+              <td
+                style="text-align: left;"
+              >
+                IGA 002
+              </td>
+            </tr>
+            <tr
+              class="mikto-table-row"
+            >
+              <td
+                style="text-align: center;"
+              >
+                3
+              </td>
+              <td
+                style="text-align: left;"
+              >
+                IGA 003
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div
-          id="mikto-column-grid1"
+          id="mikto-columns-grid1"
+        />
+        <div
+          id="mikto-filter-grid1"
         />
       </div>
     </div>
   </body>,
   "container": <div>
-    <div>
+    <div
+      style="width: 100%;"
+    >
       <table
         id="grid1"
+        style="width: 100%;"
       >
         <thead>
           <tr>
@@ -67,12 +119,12 @@ Object {
               style="text-align: center;"
             >
               <span
-                style="width: 80%;"
+                style="width: 80%; cursor: pointer;"
               >
-                10
+                id
               </span>
               <span
-                class="mikto-grid-chevron-down"
+                class="mikto-grid-chevron down"
                 style="width: 20%; float: right; text-align: center;"
               />
             </th>
@@ -83,21 +135,67 @@ Object {
               style="text-align: left;"
             >
               <span
-                style="width: 80%;"
+                style="width: 80%; cursor: pointer;"
               >
-                 name
+                name
               </span>
               <span
-                class="mikto-grid-chevron-down"
+                class="mikto-grid-chevron down"
                 style="width: 20%; float: right; text-align: center;"
               />
             </th>
           </tr>
         </thead>
-        <tbody />
+        <tbody>
+          <tr
+            class="mikto-table-row"
+          >
+            <td
+              style="text-align: center;"
+            >
+              1
+            </td>
+            <td
+              style="text-align: left;"
+            >
+              IGA 001
+            </td>
+          </tr>
+          <tr
+            class="mikto-table-row"
+          >
+            <td
+              style="text-align: center;"
+            >
+              2
+            </td>
+            <td
+              style="text-align: left;"
+            >
+              IGA 002
+            </td>
+          </tr>
+          <tr
+            class="mikto-table-row"
+          >
+            <td
+              style="text-align: center;"
+            >
+              3
+            </td>
+            <td
+              style="text-align: left;"
+            >
+              IGA 003
+            </td>
+          </tr>
+        </tbody>
       </table>
       <div
-        id="mikto-column-grid1"
+        id="mikto-columns-grid1"
+      />
+      <div
+        id="mikto-filter-grid1"
       />
     </div>
   </div>,

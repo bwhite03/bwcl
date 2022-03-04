@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Columns from "./Columns/Columns";
+import Filter from "./Filter/Filter";
 import "./datagrid.css";
 
 export type CustomRenderers<T> = Partial<
@@ -38,7 +39,7 @@ export interface TableProps<T> {
   style?: React.CSSProperties;
   className?: string;
   tableClassName?: string;
-  mode: Mode;
+  mode?: Mode;
 }
 
 export function objectKeys<T extends {}>(obj: T) {
@@ -52,8 +53,16 @@ export function DataGrid<T>(props: TableProps<T>) {
   const [columnModalStyle, setColumnModalStyle] = useState({});
   const [showColumnsModal, setShowColumnsModal] = useState(false);
   const [checkedColumns, setCheckedColumns] = useState<string[]>([]);
+  const [filterChecked, setFilterChecked] = useState(false);
+  const [filterColumn, setFilterColumn] = useState<string>("");
+  const [showFilter, setShowFilter] = useState(false);
+  const [filterStyle, setFilterStyle] = useState<React.CSSProperties>({
+    position: "absolute",
+  });
+  const [checkedFilters, setCheckedFilters] = useState<string[]>([]);
+  const [headerString, setHeaderString] = useState("");
 
-  const { fill, tableClassName = "mikto-table", style } = props;
+  const { fill, tableClassName = "mikto-table", style, mode = "dark" } = props;
   const table = useRef<HTMLTableElement>(null);
   let draggedId = "";
 
@@ -61,15 +70,36 @@ export function DataGrid<T>(props: TableProps<T>) {
     setFilteredData(props.data);
 
     const stylesheet = document.styleSheets[0];
-    let rule = ".mikto-table-row:nth-child(odd) {background-color: #aaa;}";
-    stylesheet.insertRule(rule, 1);
-    rule = ".mikto-table-row:nth-child(even) {background-color: #fff;}";
-    stylesheet.insertRule(rule, 2);
+    try {
+      let oddBackgroundColor = "#aaa";
+      if (mode === "dark") {
+        if (table.current) {
+          table.current.style.backgroundColor = "#000";
+        }
+        stylesheet.deleteRule(1);
+        stylesheet.deleteRule(2);
+        let rule = ".mikto-table-row:nth-child(odd) {background-color: #000;}";
+
+        stylesheet.insertRule(rule, 1);
+      } else {
+        if (table.current) {
+          table.current.style.backgroundColor = "#fff";
+        }
+      }
+
+      let rule = ".mikto-table-row:nth-child(odd) {background-color: #aaa;}";
+      stylesheet.insertRule(rule, 1);
+      rule = ".mikto-table-row:nth-child(even) {background-color: #fff;}";
+      stylesheet.insertRule(rule, 2);
+    } catch {}
+
     return () => {
-      stylesheet.removeRule(1);
-      stylesheet.removeRule(2);
+      try {
+        stylesheet.deleteRule(1);
+        stylesheet.deleteRule(2);
+      } catch {}
     };
-  }, []);
+  }, [mode]);
 
   const sortByProperty = (prop: keyof T, asc = 0) => {
     if (!asc) {
@@ -101,18 +131,19 @@ export function DataGrid<T>(props: TableProps<T>) {
   };
 
   const handleModal = (
-    e: React.MouseEvent,
+    e: React.MouseEvent<HTMLSpanElement>,
     divid: string,
     header: TableHeader<T>
   ) => {
     e.preventDefault();
     const div = document.getElementById(divid);
     setSelectedHeader(header);
+
     if (div && table.current) {
       const rect = div.getBoundingClientRect();
       const tableRect = table.current.getBoundingClientRect();
       if (rect && tableRect) {
-        const left = (e.clientX + rect.width - 75).toFixed(0).toString() + "px";
+        const left = e.clientX.toFixed(0).toString() + "px";
         const top =
           (rect.top - tableRect.top + 50).toFixed(0).toString() + "px";
         const style = {
@@ -138,6 +169,126 @@ export function DataGrid<T>(props: TableProps<T>) {
     }
   };
 
+  const handleFilterClick = (
+    e: React.MouseEvent<HTMLSpanElement>,
+    header: string,
+    divId: string
+  ) => {
+    const div = document.getElementById(divId);
+    // setSelectedHeader(header);
+    setHeaderString(header);
+
+    if (div && table.current) {
+      const rect = div.getBoundingClientRect();
+      const tableRect = table.current.getBoundingClientRect();
+      if (rect && tableRect) {
+        const left = (rect.left + rect.width - 75).toFixed(0).toString() + "px";
+        const top =
+          (rect.top - tableRect.top + 50).toFixed(0).toString() + "px";
+        const style = {
+          position: "absolute",
+          top: top,
+          left: left,
+        };
+        setFilterStyle({
+          position: "absolute",
+          zIndex: "5",
+          left: left,
+          top: top,
+          backgroundColor: "#aaa",
+          padding: "8px",
+        });
+        setShowFilter(!showFilter);
+      }
+    }
+  };
+
+  const dragStart = (ev: React.DragEvent<HTMLDivElement>) => {
+    const id = (ev.target as HTMLDivElement).id;
+    ev.dataTransfer.setData("text/plain", id);
+    draggedId = id;
+  };
+
+  const dragEnter = (ev: React.DragEvent<HTMLDivElement>) => {
+    ev.preventDefault();
+    const id = (ev.target as HTMLDivElement).id;
+    if (id) {
+      (ev.target as HTMLDivElement).classList.add("mikto-table-drag-over");
+    }
+  };
+
+  const dragOver = (ev: React.DragEvent<HTMLDivElement>) => {
+    ev.preventDefault();
+    const id = (ev.target as HTMLDivElement).id;
+    if (id) {
+      (ev.target as HTMLDivElement).classList.add("mikto-table-drag-over");
+    }
+  };
+
+  const dragLeave = (ev: React.DragEvent<HTMLDivElement>) => {
+    (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
+  };
+
+  const drop = (ev: React.DragEvent<HTMLDivElement>) => {
+    (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
+    const id = ev.dataTransfer.getData("text/plain");
+    const originalPosition = id.slice(id.length - 1);
+    const header = props.headers[+originalPosition];
+    props.headers.splice(+originalPosition, 1);
+
+    //get the x position of dropped element
+    const dropElementX = ev.clientY;
+    const draggable = document.getElementById(id);
+    if (draggable) {
+      draggable.classList.remove("mikto-hide-dragged-column");
+    }
+
+    const table = document.getElementById(props.identifier);
+    if (table) {
+      const thead = table.querySelector("thead");
+      if (thead) {
+        const tr = thead.querySelector("tr");
+        if (tr) {
+          for (let i = 0; i < tr.childNodes.length; i++) {
+            const el = tr.childNodes[i];
+            const id = (el as HTMLDivElement).id;
+            if (id === draggedId) {
+              continue;
+            }
+            if (el) {
+              const x1 =
+                (el as HTMLElement).getBoundingClientRect().x +
+                (el as HTMLElement).getBoundingClientRect().width / 2;
+              const x2 =
+                (el as HTMLElement).getBoundingClientRect().x +
+                (el as HTMLElement).getBoundingClientRect().width;
+
+              if (dropElementX <= x1) {
+                const newPosition = (el as HTMLElement).id.slice(
+                  (el as HTMLElement).id.length - 1
+                );
+                props.headers.splice(+newPosition, 0, header);
+                setRender(!render);
+                draggedId = "";
+                break;
+              } else if (dropElementX <= x2) {
+                if (draggable) {
+                  const newPosition = (el as HTMLElement).id.slice(
+                    (el as HTMLElement).id.length - 1
+                  );
+                  props.headers.splice(+newPosition, 0, header);
+                  setRender(!render);
+                  draggedId = "";
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
   function renderHeader(header: TableHeader<T>, id: number) {
     const { title, visible = true } = header;
     if (!visible === false) {
@@ -151,6 +302,7 @@ export function DataGrid<T>(props: TableProps<T>) {
           onContextMenu={(e) =>
             handleModal(e, `table-header-${props.identifier}-${id}`, header)
           }
+          onDragStart={dragStart}
         >
           <span
             style={{ width: "80%", cursor: "pointer" }}
@@ -162,7 +314,11 @@ export function DataGrid<T>(props: TableProps<T>) {
             style={{ width: "20%", float: "right", textAlign: "center" }}
             className={`mikto-grid-chevron down`}
             onClick={(e) =>
-              handleModal(e, `table-header-${props.identifier}-${id}`, header)
+              handleFilterClick(
+                e,
+                header.columnName as string,
+                `table-header-${props.identifier}-${id}`
+              )
             }
           ></span>
         </th>
@@ -189,6 +345,7 @@ export function DataGrid<T>(props: TableProps<T>) {
                   </td>
                 );
               }
+
               return (
                 <td style={style} key={`table-td-${i}`}>
                   {isPrimitive(item[itemProperty]) ? item[itemProperty] : ""}
@@ -201,23 +358,64 @@ export function DataGrid<T>(props: TableProps<T>) {
     );
   }
 
+  const handleFilterItemClick = (
+    checked: boolean,
+    r: string,
+    headerString: string
+  ) => {
+    if (checked) {
+      setFilterColumn(headerString);
+      if (!checkedFilters.includes(r)) {
+        checkedFilters.push(r);
+        if (headerString.length > 0) {
+          const newData = props.data.filter((d) =>
+            // @ts-ignore
+            checkedFilters.includes(d[headerString])
+          );
+          setFilteredData(newData);
+        }
+      }
+    } else {
+      const newFilters = checkedFilters.filter((f) => f !== r);
+
+      if (newFilters.length === 0) {
+        setFilteredData(props.data);
+      } else {
+        if (headerString.length > 0) {
+          const newData = props.data.filter((d) =>
+            // @ts-ignore
+            newFilters.includes(d[headerString])
+          );
+          setFilteredData(newData);
+        }
+      }
+      setCheckedFilters(newFilters);
+    }
+  };
+
   return (
     <div className={props.className} style={{ ...style, width: "100%" }}>
       <table
         ref={table}
+        style={{ width: "100%" }}
         className={props.tableClassName}
         id={props.identifier}
-        style={{ width: "100%" }}
       >
-        <thead>
+        <thead
+          onDragOver={dragOver}
+          onDragLeave={dragLeave}
+          onDragEnter={dragEnter}
+          onDrop={drop}
+        >
           <tr>{props.headers.map(renderHeader)}</tr>
         </thead>
         <tbody>{filteredData.map(renderRow)}</tbody>
       </table>
-      <div id={`mikto-column-${props.identifier}`}></div>
+      <div id={`mikto-columns-${props.identifier}`}></div>
+      <div id={`mikto-filter-${props.identifier}`}></div>
       <Columns
         open={showColumnsModal}
-        divId={`mikto-column-${props.identifier}`}
+        divId={`mikto-columns-${props.identifier}`}
         style={columnModalStyle as React.CSSProperties}
         headers={props.headers as unknown as string[]}
         checkedColumns={checkedColumns}
@@ -226,6 +424,15 @@ export function DataGrid<T>(props: TableProps<T>) {
         header={selectedHeader}
         identifier={props.identifier}
         data={props.data}
+      />
+      <Filter
+        header={headerString}
+        open={showFilter}
+        divId={`mikto-filter-${props.identifier}`}
+        data={props.data}
+        style={filterStyle}
+        availableFilters={checkedFilters}
+        filterItemClicked={handleFilterItemClick}
       />
     </div>
   );

@@ -123,4 +123,24 @@ describe("SelectField", () => {
     const div: HTMLDivElement = screen.getByTestId("alert");
     expect(div.innerHTML).toEqual("You got an error");
   });
+
+  test("", () => {
+    const testFn = jest.fn();
+    const fakeData: any[] = [];
+    const frag = render(
+      <SelectField
+        id="test"
+        label="test"
+        name="test"
+        onChange={testFn}
+        data={fakeData}
+        displayField="name"
+        valueField="id"
+        emptyMsg="select a person"
+        error="You got an error"
+      />
+    );
+    const div: HTMLDivElement = screen.getByTestId("alert");
+    expect(div.innerHTML).toEqual("You got an error");
+  });
 });

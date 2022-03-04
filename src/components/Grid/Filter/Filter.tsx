@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { TableHeader } from "../DataGrid";
 import { createPortal } from "react-dom";
-import "./Filter.css";
+import "./filter.css";
 
 export interface FilterProps<T> {
-  header: TableHeader<T>;
+  header: string;
   open: boolean;
   divId: string;
   data: T[];
@@ -37,10 +37,11 @@ function Filter<T>(props: FilterProps<T>) {
           newArray.push(targetField);
         }
       });
+
       return newArray;
     };
     // @ts-ignore
-    setUniques(data.unique(header.columnName));
+    setUniques(data.unique(header));
   }, []);
 
   const amIChecked = (v: string) => {
@@ -50,7 +51,7 @@ function Filter<T>(props: FilterProps<T>) {
   if (open && div) {
     return createPortal(
       <div style={style}>
-        <h2>Filters</h2>
+        <div className="mikto-table-filters-header">Filters</div>
         {uniques &&
           uniques.map((r: string, i: number) => (
             <div
@@ -62,14 +63,10 @@ function Filter<T>(props: FilterProps<T>) {
                 type="checkbox"
                 checked={amIChecked(r)}
                 onChange={(e) =>
-                  filterItemClicked(
-                    e.target.checked,
-                    r,
-                    header.columnName as string
-                  )
+                  filterItemClicked(e.target.checked, r, header as string)
                 }
               />
-              <div className="mikto-table-filter-table">{r}</div>
+              <span className="mikto-table-filter-table">{r}</span>
             </div>
           ))}
       </div>,
