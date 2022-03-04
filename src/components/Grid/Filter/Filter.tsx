@@ -37,12 +37,11 @@ function Filter<T>(props: FilterProps<T>) {
           newArray.push(targetField);
         }
       });
-
       return newArray;
     };
     // @ts-ignore
     setUniques(data.unique(header));
-  }, []);
+  }, [open]);
 
   const amIChecked = (v: string) => {
     return availableFilters.includes(v);
