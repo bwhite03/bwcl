@@ -232,13 +232,27 @@ export function DataGrid<T>(props: TableProps<T>) {
   const drop = (ev: React.DragEvent<HTMLDivElement>) => {
     (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
     const id = ev.dataTransfer.getData("text/plain");
+
     const originalPosition = id.slice(id.length - 1);
     const header = props.headers[+originalPosition];
     props.headers.splice(+originalPosition, 1);
 
+    const dropId = (ev.target as HTMLElement).id.slice(
+      (ev.target as HTMLElement).id.length - 1
+    );
+
+    if (dropId == originalPosition) {
+      return;
+    }
+
     //get the x position of dropped element
     const dropElementX = ev.clientY;
     const draggable = document.getElementById(id);
+
+    if (draggable && draggable.id === draggedId) {
+      return;
+    }
+
     if (draggable) {
       draggable.classList.remove("mikto-hide-dragged-column");
     }
@@ -256,12 +270,11 @@ export function DataGrid<T>(props: TableProps<T>) {
               continue;
             }
             if (el) {
-              const x1 =
-                (el as HTMLElement).getBoundingClientRect().x +
-                (el as HTMLElement).getBoundingClientRect().width / 2;
-              const x2 =
-                (el as HTMLElement).getBoundingClientRect().x +
-                (el as HTMLElement).getBoundingClientRect().width;
+              const rect = (el as HTMLElement).getBoundingClientRect();
+              const x1 = rect.width - (rect.x + rect.width / 4);
+              const x2 = rect.x + rect.width;
+
+              //check to see if we are dropping this in the same place
 
               if (dropElementX <= x1) {
                 const newPosition = (el as HTMLElement).id.slice(
@@ -331,27 +344,23 @@ export function DataGrid<T>(props: TableProps<T>) {
   function renderRow(item: T, id: number) {
     return (
       <tr key={`table-row-${id}`} className="mikto-table-row">
-        {objectKeys(item).map((itemProperty, i) => {
-          if (props.headers[i]) {
-            const { visible = true } = props.headers[i];
-            if (!visible === false) {
-              const customRenderer = props.customRenderers?.[itemProperty];
-              const style = props.headers[i].style;
-
-              if (customRenderer) {
-                return (
-                  <td style={style} key={`table-td-${i}`}>
-                    {customRenderer(item)}
-                  </td>
-                );
-              }
-
+        {props.headers.map((header, i) => {
+          const { visible = true } = header;
+          if (visible) {
+            const data = item[header.columnName];
+            const customRenderer = props.customRenderers?.[header.columnName];
+            if (customRenderer) {
               return (
-                <td style={style} key={`table-td-${i}`}>
-                  {isPrimitive(item[itemProperty]) ? item[itemProperty] : ""}
+                <td style={style} key={`table-id-${i}`}>
+                  {customRenderer(item)}
                 </td>
               );
             }
+            return (
+              <td style={header.style} key={`table-id-${i}`}>
+                {data}
+              </td>
+            );
           }
         })}
       </tr>
