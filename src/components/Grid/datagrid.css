@@ -11,6 +11,15 @@
   top: 0;
 }
 
+.mikto-header-sort-dark {
+  color: slateblue;
+  background-color: #000;
+}
+
+.mikto-header-sort-light {
+  color: slateblue;
+}
+
 .mikto-table thead th {
   display: grid;
   grid-template-columns: 1fr 20px;

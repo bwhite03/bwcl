@@ -290,7 +290,7 @@ function DataGrid<T>(props: TableProps<T>) {
           key={`table-header-${id}`}
           id={`table-header-${props.identifier}-${id}`}
           style={header.style}
-          className="mikto-header-sort"
+          className={`mikto-header-sort-${mode}`}
           onContextMenu={(e) =>
             handleModal(e, `table-header-${props.identifier}-${id}`, header)
           }
