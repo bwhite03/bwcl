@@ -186,7 +186,7 @@ GENERATE_SOURCEMAP=false
 [✔] make columns draggable
 [✔] enable light and dark mode
 [✔] make DataGrid right clickable
-[ ] fix column wiget vertical placement
-[ ] fix filter widget vertical placement
+[✔] fix column wiget vertical placement
+[✔] fix filter widget vertical placement
 [ ] fix custom renders
 ```

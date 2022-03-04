@@ -109,5 +109,5 @@ GridExample.args = {
   identifier: "grid1",
   // @ts-ignore
   headers: headers,
-  style: { color: "slateblue", marginTop: "300px" },
+  style: { color: "slateblue" },
 };
