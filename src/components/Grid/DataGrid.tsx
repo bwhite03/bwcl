@@ -46,12 +46,12 @@ export function objectKeys<T extends {}>(obj: T) {
   return Object.keys(obj).map((objKey) => objKey as keyof T);
 }
 
-export function DataGrid<T>(props: TableProps<T>) {
+function DataGrid<T>(props: TableProps<T>) {
   const [render, setRender] = useState(false);
   const [filteredData, setFilteredData] = useState<T[]>([]);
   const [selectedHeader, setSelectedHeader] = useState<TableHeader<T>>();
   const [columnModalStyle, setColumnModalStyle] = useState({});
-  const [showColumnsModal, setShowColumnsModal] = useState(false);
+  const [showColumnsModal, setShowColumnModal] = useState(false);
   const [checkedColumns, setCheckedColumns] = useState<string[]>([]);
   const [filterChecked, setFilterChecked] = useState(false);
   const [filterColumn, setFilterColumn] = useState<string>("");
@@ -63,34 +63,35 @@ export function DataGrid<T>(props: TableProps<T>) {
   const [headerString, setHeaderString] = useState("");
 
   const { fill, tableClassName = "mikto-table", style, mode = "dark" } = props;
+
   const table = useRef<HTMLTableElement>(null);
   let draggedId = "";
 
   useEffect(() => {
+    console.log("rendering");
     setFilteredData(props.data);
 
     const stylesheet = document.styleSheets[0];
     try {
       let oddBackgroundColor = "#aaa";
+
       if (mode === "dark") {
         if (table.current) {
           table.current.style.backgroundColor = "#000";
         }
         stylesheet.deleteRule(1);
         stylesheet.deleteRule(2);
-        let rule = ".mikto-table-row:nth-child(odd) {background-color: #000;}";
-
+        let rule = ".mikto-table-row:nth-child(odd) {background-color: #aaa;}";
         stylesheet.insertRule(rule, 1);
       } else {
         if (table.current) {
           table.current.style.backgroundColor = "#fff";
         }
+        let rule = ".mikto-table-row:nth-child(odd) {background-color: #aaa;}";
+        stylesheet.insertRule(rule, 1);
+        rule = ".mikto-table-row:nth-child(even) {background-color: #fff;}";
+        stylesheet.insertRule(rule, 2);
       }
-
-      let rule = ".mikto-table-row:nth-child(odd) {background-color: #aaa;}";
-      stylesheet.insertRule(rule, 1);
-      rule = ".mikto-table-row:nth-child(even) {background-color: #fff;}";
-      stylesheet.insertRule(rule, 2);
     } catch {}
 
     return () => {
@@ -111,7 +112,12 @@ export function DataGrid<T>(props: TableProps<T>) {
     }
   };
 
-  const handleSortClick = (e: React.MouseEvent, columnName: keyof T) => {
+  const handleSortClick = (
+    e: React.MouseEvent<HTMLSpanElement>,
+    columnName: keyof T
+  ) => {
+    e.preventDefault();
+    console.log("i am sorting");
     const header = props.headers.find((h) => h.columnName === columnName);
     if (header) {
       if (!header.sortable) {
@@ -152,7 +158,7 @@ export function DataGrid<T>(props: TableProps<T>) {
           left: left,
         };
         setColumnModalStyle(style);
-        setShowColumnsModal(!showColumnsModal);
+        setShowColumnModal(!showColumnsModal);
       }
     }
   };
@@ -172,10 +178,9 @@ export function DataGrid<T>(props: TableProps<T>) {
   const handleFilterClick = (
     e: React.MouseEvent<HTMLSpanElement>,
     header: string,
-    divId: string
+    divid: string
   ) => {
-    const div = document.getElementById(divId);
-    // setSelectedHeader(header);
+    const div = document.getElementById(divid);
     setHeaderString(header);
 
     if (div && table.current) {
@@ -231,8 +236,8 @@ export function DataGrid<T>(props: TableProps<T>) {
 
   const drop = (ev: React.DragEvent<HTMLDivElement>) => {
     (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
-    const id = ev.dataTransfer.getData("text/plain");
 
+    const id = ev.dataTransfer.getData("text/plain");
     const originalPosition = id.slice(id.length - 1);
     const header = props.headers[+originalPosition];
     props.headers.splice(+originalPosition, 1);
@@ -240,19 +245,13 @@ export function DataGrid<T>(props: TableProps<T>) {
     const dropId = (ev.target as HTMLElement).id.slice(
       (ev.target as HTMLElement).id.length - 1
     );
-
     if (dropId == originalPosition) {
       return;
     }
 
-    //get the x position of dropped element
-    const dropElementX = ev.clientY;
+    // get the X position of the dropped element
+    const dropElementX = ev.clientX;
     const draggable = document.getElementById(id);
-
-    if (draggable && draggable.id === draggedId) {
-      return;
-    }
-
     if (draggable) {
       draggable.classList.remove("mikto-hide-dragged-column");
     }
@@ -269,12 +268,11 @@ export function DataGrid<T>(props: TableProps<T>) {
             if (id === draggedId) {
               continue;
             }
+
             if (el) {
               const rect = (el as HTMLElement).getBoundingClientRect();
               const x1 = rect.width - (rect.x + rect.width / 4);
               const x2 = rect.x + rect.width;
-
-              //check to see if we are dropping this in the same place
 
               if (dropElementX <= x1) {
                 const newPosition = (el as HTMLElement).id.slice(
@@ -342,6 +340,7 @@ export function DataGrid<T>(props: TableProps<T>) {
   }
 
   function renderRow(item: T, id: number) {
+    console.log("rendering row");
     return (
       <tr key={`table-row-${id}`} className="mikto-table-row">
         {props.headers.map((header, i) => {
@@ -349,16 +348,19 @@ export function DataGrid<T>(props: TableProps<T>) {
           if (visible) {
             const data = item[header.columnName];
             const customRenderer = props.customRenderers?.[header.columnName];
+
             if (customRenderer) {
               return (
-                <td style={style} key={`table-id-${i}`}>
+                <td style={style} key={`table-td-${i}`}>
                   {customRenderer(item)}
                 </td>
               );
             }
             return (
-              <td style={header.style} key={`table-id-${i}`}>
-                {data}
+              <td style={header.style} key={`table-td-${i}`}>
+                {isPrimitive(item[header.columnName])
+                  ? item[header.columnName]
+                  : ""}
               </td>
             );
           }
@@ -386,8 +388,7 @@ export function DataGrid<T>(props: TableProps<T>) {
       }
     } else {
       const newFilters = checkedFilters.filter((f) => f !== r);
-
-      if (newFilters.length === 0) {
+      if (newFilters.length == 0) {
         setFilteredData(props.data);
       } else {
         if (headerString.length > 0) {
@@ -429,8 +430,6 @@ export function DataGrid<T>(props: TableProps<T>) {
         headers={props.headers as unknown as string[]}
         checkedColumns={checkedColumns}
         handleCheckClick={handleColumnCheck}
-        // @ts-ignore
-        header={selectedHeader}
         identifier={props.identifier}
         data={props.data}
       />
