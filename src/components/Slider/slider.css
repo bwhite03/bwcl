@@ -1,0 +1,31 @@
+input[type="range"] {
+  cursor: pointer;
+}
+
+.slide-container {
+  width: 300px;
+}
+
+.slider-style-track {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #1ea7fd;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider-style::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
