@@ -68,7 +68,6 @@ function DataGrid<T>(props: TableProps<T>) {
   let draggedId = "";
 
   useEffect(() => {
-    console.log("rendering");
     setFilteredData(props.data);
 
     const stylesheet = document.styleSheets[0];
@@ -321,7 +320,6 @@ function DataGrid<T>(props: TableProps<T>) {
   }
 
   function renderRow(item: T, id: number) {
-    console.log("rendering row");
     let rowStyle = "mikto-table-row-light";
     if (mode === "dark") {
       rowStyle = "mikto-table-row-dark";
