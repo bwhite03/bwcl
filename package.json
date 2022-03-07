@@ -41,8 +41,11 @@
     "@types/react": "^17.0.39",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
+    "codecov": "^3.8.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rollup": "^2.69.0",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -51,11 +54,8 @@
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
   },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/user-event": "^13.5.0",
     "postcss": "^8.4.7"
   }
