@@ -5,6 +5,7 @@ import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+//import scss from "rollup-plugin-scss";
 
 const packageJson = require("./package.json");
 
@@ -32,6 +33,12 @@ export default [
         exclude: [/.stories.((js|jsx|ts|tsx|mdx))$/, "support"],
       }),
       postcss(),
+      // scss({
+      //   output: "./dist/css/style.min.css",
+      //   failOnError: true,
+      //   runtime: require("sass"),
+      //   outputStyle: "compressed",
+      // }),
       terser(),
     ],
   },

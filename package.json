@@ -9,13 +9,15 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && npm run bundle:sass && npm run minify",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "codecov": "npm test && test:coverage"
+    "codecov": "npm test && test:coverage",
+    "bundle:sass": "sass scss/main.scss dist/css/bwcl.css",
+    "minify": "postcss dist/css/bwcl.css > dist/css/bwcl.min.css"
   },
   "author": "Blake",
   "license": "MIT",
@@ -43,8 +45,11 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
     "codecov": "^3.8.3",
+    "cssnano": "^5.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "postcss": "^8.4.8",
+    "postcss-cli": "^9.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.69.0",
@@ -52,12 +57,12 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.49.9",
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/user-event": "^13.5.0",
-    "postcss": "^8.4.7"
+    "@testing-library/user-event": "^13.5.0"
   }
 }

@@ -6,3 +6,6 @@ export { default as RippleButton } from "./RippleButton";
 export { default as DataGrid } from "./Grid";
 export { default as ToggleSwitch } from "./ToggleSwitch";
 export { default as Slider } from "./Slider";
+export { default as ToastContainer } from "./ToastContainer";
+export { default as Toast } from "./Toast";
+export * from "./Icons";

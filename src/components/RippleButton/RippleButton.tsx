@@ -7,6 +7,7 @@ export interface RippleButtonProps {
   color?: string;
   hoverColor?: string;
   textColor?: string;
+  style?: React.CSSProperties;
 }
 function RippleButton(props: RippleButtonProps) {
   const btn = useRef<HTMLButtonElement>(null);
@@ -70,7 +71,12 @@ function RippleButton(props: RippleButtonProps) {
   }, []);
 
   return (
-    <button ref={btn} className="ripple-button" onClick={props.onClick}>
+    <button
+      ref={btn}
+      className="ripple-button"
+      onClick={props.onClick}
+      style={props.style}
+    >
       {props.text}
       <span className="ripple-button-circle"></span>
     </button>
