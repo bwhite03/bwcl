@@ -29,7 +29,7 @@ export default [
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
-        exclude: [/.stories.((js|jsx|ts|tsx|mdx))$/],
+        exclude: [/.stories.((js|jsx|ts|tsx|mdx))$/, "support"],
       }),
       postcss(),
       terser(),

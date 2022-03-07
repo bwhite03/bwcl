@@ -26,8 +26,16 @@ function Slider(props: SliderProps) {
   }, []);
 
   let sliderClass = "slider";
-  if (props.trackColor) sliderClass += " slider-style-track";
-  if (props.image) sliderClass += " slider-style-track slider-style";
+
+  if (props.trackColor) {
+    sliderClass += " slider-style-track";
+  } else {
+  }
+
+  if (props.image) {
+    sliderClass += " slider-style-track slider-style";
+  } else {
+  }
 
   return (
     <div className="slide-container">
