@@ -3,9 +3,10 @@
   min-height: $rt-toast-min-height;
   min-width: $rt-toast-min-width;
   box-sizing: border-box;
-  margin-bottom: 8px;
+  margin-bottom: 1rem;
+  padding: 8px;
   border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 2px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   max-height: $rt-toast-max-height;
   font-family: $rt-font-family;
@@ -19,20 +20,20 @@
   }
   &--info {
     background: $rt-color-info;
-    color: $rt-text-color-default;
+    color: $rt-text-color-dark;
   }
   &--success {
     background: $rt-color-success;
-    color: $rt-text-color-default;
+    color: $rt-text-color-dark;
   }
   &--warning {
-    color: $rt-text-color-default;
+    background: $rt-color-warning;
   }
   &--error {
     background: $rt-color-error;
-    color: $rt-text-color-default;
+    color: $rt-text-color-dark;
   }
-  &--message {
+  &-message {
     margin-left: 10px;
     display: flex;
     align-items: center;

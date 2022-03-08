@@ -1,4 +1,5 @@
 import { toastManager, Event, ToastEmit } from "./toastManager";
+
 import {
   AnimationTypes,
   NotValidatedToastProps,
@@ -19,7 +20,7 @@ function dispatchToast(
 ): Id {
   if (!content) {
     throw new Error(
-      "It looks like you did not include some content for this toast. Please include either a string, React Element, or something that resembles a React Element"
+      "It looks like you did not include some content for this toast. Please include either a string, React Element, or something that resemples a React Element"
     );
   }
 

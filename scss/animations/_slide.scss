@@ -6,11 +6,9 @@
   0% {
     transform: translateX(110%);
   }
-
   95% {
     transform: translateX(-20%);
   }
-
   100% {
     @include transform;
   }
@@ -20,11 +18,9 @@
   0% {
     transform: translateX(110%);
   }
-
   95% {
     transform: translateX(-20%);
   }
-
   100% {
     @include transform;
   }
@@ -34,11 +30,9 @@
   0% {
     @include transform;
   }
-
   10% {
     transform: translateX(-25%);
   }
-
   100% {
     transform: translateX(1000%);
   }
@@ -48,11 +42,9 @@
   0% {
     @include transform;
   }
-
   10% {
     transform: translateX(-25%);
   }
-
   100% {
     transform: translateX(1000%);
   }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-
+import { useToastContainer } from "../../hooks";
 import { toastManager, Event } from "../../core";
 import { Default } from "../../utils";
 import { ToastContainerProps } from "../../interface";
@@ -10,7 +10,6 @@ import {
   ToastProps,
   ToastContent,
 } from "../../types";
-import { useToastContainer } from "../../hooks";
 import Toast from "../Toast";
 
 const ToastContainer: React.FC<ToastContainerProps> = (props) => {
@@ -59,6 +58,7 @@ const ToastContainer: React.FC<ToastContainerProps> = (props) => {
           toastDiv.style.animationDuration = "1s";
           toastDiv.style.animationFillMode = "forwards";
 
+          // now we can call another setTimeout used to remove the element entirely
           setTimeout(() => {
             toastManager.publish(Event.Clear, options.toastId);
           }, 550);
@@ -66,6 +66,7 @@ const ToastContainer: React.FC<ToastContainerProps> = (props) => {
       }, autoCloseSelay);
     }
   }
+
   toastManager.subscribe(Event.Show, buildToast);
 
   function removeToast() {

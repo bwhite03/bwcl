@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastManagerToastProps } from "../interface";
 import {
   ToastContent,
   ToastPosition,
@@ -35,6 +36,7 @@ export interface ToastManager {
   subscribe(event: Event, callback: OnClearCallback): ToastManager;
   publish(event: Event.Clear, id: Id): void;
   publish(event: Event.Show, args: ToastEmit): void;
+
   getToastList(): ToastProps[];
   setContainerId(id: string): void;
   getContainerId(): string;
@@ -67,13 +69,13 @@ export const toastManager: ToastManager = {
     if (listLength === 0) {
       this.list.get(event)?.push(callback);
     }
+
     return this;
   },
-
   publish(event: Event, args: EventEmitType) {
     this.list.has(event) &&
       this.list.get(event)!.forEach((callback: Callback) => {
-        if (event === Event.Show) {
+        if (event == Event.Show) {
           const {
             content,
             toastId,
@@ -84,6 +86,7 @@ export const toastManager: ToastManager = {
             toastBodyStyle,
             toastAnimation,
           } = args as ToastEmit;
+
           const newToast: ToastProps = {
             content,
             type,
@@ -91,9 +94,11 @@ export const toastManager: ToastManager = {
             position: this.toastPosition,
             toastAnimation,
             toastAutoClose,
+            toastShowIcon,
             toastClassName,
             toastBodyStyle,
           };
+
           this.toastList.push(newToast);
           const timer: TimeoutId = setTimeout(() => {
             // @ts-ignore
@@ -110,19 +115,15 @@ export const toastManager: ToastManager = {
         }
       });
   },
-
   getToastList() {
     return this.toastList;
   },
-
   setContainerId(id: string) {
     this.toastContainerId = id;
   },
-
   getContainerId(): string {
     return this.toastContainerId;
   },
-
   setToastPosition(position: ToastPosition): void {
     this.toastPosition = position;
   },

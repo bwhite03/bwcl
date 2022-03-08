@@ -22,13 +22,12 @@ const Toast: React.FC<ToastProps> = (props) => {
   if (toastAnimation) {
     animation = toastAnimation as AnimationTypes;
   }
-
   if (toastShowIcon === true || toastShowIcon === false) {
     showIcon = toastShowIcon;
   }
-
   const divAnimationClassName = `${Default.CSS_NAMESPACE}__${animation}-enter--${position}`;
   const classNames = `${Default.CSS_NAMESPACE}__toast ${Default.CSS_NAMESPACE}__toast--${type} ${divAnimationClassName} ${toastClassName}`;
+
   const maybeIcon = Icons[type as keyof typeof Icons];
   const iconProps = { theme, type };
   let Icon: React.ReactNode = maybeIcon && maybeIcon(iconProps);
@@ -49,7 +48,7 @@ const Toast: React.FC<ToastProps> = (props) => {
     const toastDiv = document.getElementById(toastId as string);
     if (toastDiv) {
       toastDiv.classList.remove(
-        `${Default.CSS_NAMESPACE}__${animation}-enter-${position}`
+        `${Default.CSS_NAMESPACE}__${animation}-enter--${position}`
       );
       toastDiv.classList.add(
         `${Default.CSS_NAMESPACE}__${animation}-exit--${position}`
@@ -73,7 +72,7 @@ const Toast: React.FC<ToastProps> = (props) => {
       role="main"
     >
       {Icon && (
-        <div className={`${Default.CSS_NAMESPACE}__toast-icon}`}>{Icon}</div>
+        <div className={`${Default.CSS_NAMESPACE}__toast-icon`}>{Icon}</div>
       )}
       <div className={`${Default.CSS_NAMESPACE}__toast-message`}>{content}</div>
     </div>

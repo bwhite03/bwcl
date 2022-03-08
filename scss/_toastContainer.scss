@@ -1,6 +1,6 @@
 .#{$rt-namespace}__toast-container {
   z-index: $rt-z-index;
-  -webskit-transform: translate3d(0, 0, #{$rt-z-index}px);
+  -webkit-transform: translate3d(0, 0, #{$rt-z-index}px);
   -moz-transform: translate3d(0, 0, #{$rt-z-index}px);
   -o-transform: translate3d(0, 0, #{$rt-z-index}px);
   transform: translate3d(0, 0, #{$rt-z-index}px);
