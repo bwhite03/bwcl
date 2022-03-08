@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icons should render error 1`] = `
+<div>
+  <svg
+    fill-opacity="var(--toastify__toast-icon-color-error)"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`Icons should render info 1`] = `
+<div>
+  <svg
+    fill-opacity="var(--toastify__toast-icon-color-info)"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`Icons should render success 1`] = `
+<div>
+  <svg
+    fill-opacity="var(--toastify__toast-icon-color-success)"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`Icons should render warning 1`] = `
+<div>
+  <svg
+    fill-opacity="var(--toastify__toast-icon-color-warning)"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  />
+</div>
+`;
+
+exports[`Icons should should render color 1`] = `
+<div>
+  <svg
+    fill-opacity="currentColor"
+    height="100%"
+    viewBox="0 0 24 24"
+    width="100%"
+  />
+</div>
+`;

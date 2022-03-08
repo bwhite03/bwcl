@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast it should render correctly 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--success Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is my toast
+    </div>
+  </div>
+</div>
+`;

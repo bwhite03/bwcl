@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import ToastContainer from "../ToastContainer/ToastContainer";
 import RippleButton from "../RippleButton/RippleButton";
-import { ToastPosition } from "../../types";
+import { ToastPosition, AnimationTypes } from "../../types";
 import "../../../dist/css/bwcl.css";
 import { toast } from "../../core";
 
 export interface ToastDemoProps {
   position: ToastPosition;
+  animation: AnimationTypes;
 }
 
 const ToastDemo = (props: ToastDemoProps) => {
@@ -24,7 +25,7 @@ const ToastDemo = (props: ToastDemoProps) => {
   };
 
   const handleWarn = () => {
-    toast.warning(message);
+    toast.warning("😡" + message);
   };
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +35,11 @@ const ToastDemo = (props: ToastDemoProps) => {
 
   return (
     <div>
-      <ToastContainer position={props.position} />
+      <ToastContainer
+        position={props.position}
+        animation={props.animation}
+        autoClose={false}
+      />
       <div>
         <input type="text" value={message} onChange={handleTextChange} />
       </div>

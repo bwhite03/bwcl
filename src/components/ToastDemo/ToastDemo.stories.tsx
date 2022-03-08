@@ -29,3 +29,27 @@ export const ToastDemoExampleBottomCenter = Template.bind({});
 ToastDemoExampleBottomCenter.args = {
   position: "bottom-center",
 };
+
+export const ToastDemoZoom = Template.bind({});
+ToastDemoZoom.args = {
+  position: "top-right",
+  animation: "zoom",
+};
+
+export const ToastDemoFlip = Template.bind({});
+ToastDemoFlip.args = {
+  position: "top-right",
+  animation: "flip",
+};
+
+export const ToastDemoBounce = Template.bind({});
+ToastDemoBounce.args = {
+  position: "top-right",
+  animation: "bounce",
+};
+
+export const ToastDemoSpin = Template.bind({});
+ToastDemoSpin.args = {
+  position: "top-right",
+  animation: "spin",
+};
