@@ -335,7 +335,7 @@ function DataGrid<T>(props: TableProps<T>) {
 
             if (customRenderer) {
               return (
-                <td style={style} key={`table-td-${i}`}>
+                <td style={header.style} key={`table-td-${i}`}>
                   {customRenderer(item)}
                 </td>
               );

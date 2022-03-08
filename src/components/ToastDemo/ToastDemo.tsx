@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import ToastContainer from "../ToastContainer/ToastContainer";
 import RippleButton from "../RippleButton/RippleButton";
-
+import { ToastPosition } from "../../types";
 import "../../../dist/css/bwcl.css";
 import { toast } from "../../core";
 
-const ToastDemo = () => {
+export interface ToastDemoProps {
+  position: ToastPosition;
+}
+
+const ToastDemo = (props: ToastDemoProps) => {
   const [message, setMessage] = useState("");
 
   const handleSuccess = () => {
@@ -30,7 +34,7 @@ const ToastDemo = () => {
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer position={props.position} />
       <div>
         <input type="text" value={message} onChange={handleTextChange} />
       </div>
