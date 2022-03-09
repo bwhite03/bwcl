@@ -15,3 +15,123 @@ exports[`Toast it should render correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Toast should render without position 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--success Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is toast
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Toast should show error icon 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--error Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-icon"
+    >
+      <svg
+        fill-opacity="var(--toastify__toast-icon-color-error)"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      />
+    </div>
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is toast
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Toast should show info icon 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--info Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-icon"
+    >
+      <svg
+        fill-opacity="var(--toastify__toast-icon-color-info)"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      />
+    </div>
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is toast
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Toast should show success icon 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--success Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-icon"
+    >
+      <svg
+        fill-opacity="var(--toastify__toast-icon-color-success)"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      />
+    </div>
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is toast
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Toast should show warning icon 1`] = `
+<div>
+  <div
+    class="Toastify__toast Toastify__toast--warning Toastify__slide-enter--top-right undefined"
+    id="123"
+    role="main"
+  >
+    <div
+      class="Toastify__toast-icon"
+    >
+      <svg
+        fill-opacity="var(--toastify__toast-icon-color-warning)"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      />
+    </div>
+    <div
+      class="Toastify__toast-message"
+    >
+      Here is toast
+    </div>
+  </div>
+</div>
+`;

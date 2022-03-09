@@ -8,4 +8,5 @@ export { default as ToggleSwitch } from "./ToggleSwitch";
 export { default as Slider } from "./Slider";
 export { default as ToastContainer } from "./ToastContainer";
 export { default as Toast } from "./Toast";
+export { default as Tabs } from "./Tabs";
 export * from "./Icons";
