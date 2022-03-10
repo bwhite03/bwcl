@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiSelectPortal should not render a portal 1`] = `<div />`;
+
+exports[`MultiSelectPortal should render correctly 1`] = `<div />`;
+
+exports[`MultiSelectPortal should render correctly without an id 1`] = `<div />`;
+
+exports[`MultiSelectPortal should render with no data 1`] = `<div />`;

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiSelect should render correctly 1`] = `
+<div>
+  <div
+    class="multi-select"
+  >
+    <div
+      class="select-box"
+      id="selectBoxId"
+    >
+      <select
+        class="form-control"
+        id="selectId"
+      >
+        <option
+          value="0"
+        >
+          select a department
+        </option>
+      </select>
+    </div>
+    <div
+      id="ms-portal-container"
+    />
+  </div>
+</div>
+`;
+
+exports[`MultiSelect should rener without default props 1`] = `
+<div>
+  <div
+    class="multi-select"
+  >
+    <div
+      class="select-box"
+      id="selectBoxId"
+    >
+      <select
+        class="form-control"
+        id="selectId"
+      >
+        <option
+          value="0"
+        >
+          select a department
+        </option>
+      </select>
+    </div>
+    <div
+      id="ms-portal-container"
+    />
+  </div>
+</div>
+`;
