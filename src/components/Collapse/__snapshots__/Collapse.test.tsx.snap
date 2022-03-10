@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse should render correctly 1`] = `
+<div>
+  <div
+    class="wrap-collapse"
+  >
+    <input
+      id="c1"
+      type="checkbox"
+    />
+    <label
+      class="lbl-toggle-collapse"
+      data-testid="collapse-c1"
+    >
+      c1
+    </label>
+    <div
+      class="collapse-content collapsed"
+    >
+      <h2>
+        test
+      </h2>
+    </div>
+  </div>
+</div>
+`;

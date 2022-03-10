@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapsible should render correctly 1`] = `
+<div>
+  <div
+    class="wrap-collapsible"
+  >
+    <input
+      class="toggle-collapsible"
+      id="collapsible"
+      type="checkbox"
+    />
+    <label
+      class="lbl-toggle-collapsible"
+      for="collapsible"
+    >
+      c1
+    </label>
+    <div
+      class="collapsible-content"
+    >
+      <div
+        class="inner-content-collapsible"
+      >
+        <h1>
+          Hello
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+`;
