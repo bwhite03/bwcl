@@ -13,4 +13,5 @@ export { default as MultiSelect } from './MultiSelect';
 export { default as Collapse } from './Collapse';
 export { default as Collaspible } from './Collaspible';
 export { default as PSM } from './PSM';
+export { default as Confirm } from './Confirm';
 export * from './Icons';
