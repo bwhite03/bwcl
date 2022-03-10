@@ -60,7 +60,6 @@ function MultiSelect<T>(props: MultiSelectProps<T>) {
     const actualSelect = document.getElementById(selectId) as HTMLSelectElement;
     if (actualSelect) {
       actualSelect.options.remove;
-      window.addEventListener('click', tapOutside);
 
       setTimeout(() => {
         const select = document.getElementById(selectBoxId);
@@ -71,6 +70,7 @@ function MultiSelect<T>(props: MultiSelectProps<T>) {
           portal.style.top = selectRect.bottom + 'px';
           portal.style.left = selectRect.left + 'px';
           portal.style.backgroundColor = backgroundColor;
+          window.addEventListener('click', tapOutside);
           const input = document.getElementById(inputId);
           if (input) {
             input.focus();
