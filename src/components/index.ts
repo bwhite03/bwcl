@@ -12,4 +12,5 @@ export { default as Tabs } from './Tabs';
 export { default as MultiSelect } from './MultiSelect';
 export { default as Collapse } from './Collapse';
 export { default as Collaspible } from './Collaspible';
+export { default as PSM } from './PSM';
 export * from './Icons';
