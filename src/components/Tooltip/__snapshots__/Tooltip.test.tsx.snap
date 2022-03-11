@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip should render correctly 1`] = `
+<div>
+  <span
+    class="bwcl-tool-tip-wrapper"
+  >
+    <span
+      class="bwcl-tooltip-trigger"
+    >
+      <h2>
+        test
+      </h2>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Tooltip should render with style 1`] = `
+<div>
+  <span
+    class="bwcl-tool-tip-wrapper"
+  >
+    <span
+      class="bwcl-tooltip-trigger"
+    >
+      <h2>
+        test
+      </h2>
+    </span>
+  </span>
+</div>
+`;
