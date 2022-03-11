@@ -1,0 +1,29 @@
+.bwcl-progress-bar {
+  height: 30px;
+  width: 300px;
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  position: absolute;
+  left: 200;
+  top: 20;
+  opacity: 0.8;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bwcl-progress-done {
+  background: linear-gradient(to left, #3d61d9, #8062c4);
+  box-shadow: 0 3px 3px -5px #3d61d9, 0, 2px 5px #3d61d9;
+  color: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: 1s ease;
+}
+
+.bwcl-progress-msg1 {
+  color: #fff;
+  transform: translateY(-135%) translateX(100px);
+}

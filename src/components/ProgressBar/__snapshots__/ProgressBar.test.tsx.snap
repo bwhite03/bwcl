@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar should render correctly 1`] = `
+<div>
+  <div
+    class="bwcl-progress-bar"
+  >
+    <div
+      class="bwcl-progress-done"
+      style="width: 50%;"
+    />
+    <div
+      class="bwcl-progress-msg"
+      style="color: rgb(22, 10, 90); transform: translateY(-135%) translateX(100px);"
+    >
+      progress 50
+    </div>
+  </div>
+</div>
+`;
