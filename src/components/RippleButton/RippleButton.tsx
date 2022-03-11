@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import "./ripplebutton.css";
+import React, { useEffect, useRef } from 'react';
+import './ripplebutton.css';
 
 export interface RippleButtonProps {
   text: string;
@@ -12,9 +12,9 @@ export interface RippleButtonProps {
 function RippleButton(props: RippleButtonProps) {
   const btn = useRef<HTMLButtonElement>(null);
   const {
-    color = "#2952e3",
-    hoverColor = "#2546bd",
-    textColor = "#fff",
+    color = '#2952e3',
+    hoverColor = '#2546bd',
+    textColor = '#fff',
   } = props;
 
   const mouseEnter = (e: MouseEvent) => {
@@ -39,10 +39,10 @@ function RippleButton(props: RippleButtonProps) {
     const xInside = x - buttonLeft;
     const yInside = y - buttonTop;
 
-    const circle = document.createElement("span");
-    circle.classList.add("ripple-button-circle");
-    circle.style.top = yInside + "px";
-    circle.style.left = xInside + "px";
+    const circle = document.createElement('span');
+    circle.classList.add('ripple-button-circle');
+    circle.style.top = yInside + 'px';
+    circle.style.left = xInside + 'px';
     if (btn.current) {
       btn.current.appendChild(circle);
     }
@@ -56,16 +56,16 @@ function RippleButton(props: RippleButtonProps) {
       btn.current.style.backgroundColor = color;
       btn.current.style.color = textColor;
 
-      btn.current.addEventListener("mouseenter", mouseEnter);
-      btn.current.addEventListener("mouseleave", mouseLeave);
-      btn.current.addEventListener("click", click);
+      btn.current.addEventListener('mouseenter', mouseEnter);
+      btn.current.addEventListener('mouseleave', mouseLeave);
+      btn.current.addEventListener('click', click);
     }
 
     return () => {
       if (btn.current) {
-        btn.current.removeEventListener("mouseenter", mouseEnter);
-        btn.current.removeEventListener("mouseleave", mouseLeave);
-        btn.current.removeEventListener("click", click);
+        btn.current.removeEventListener('mouseenter', mouseEnter);
+        btn.current.removeEventListener('mouseleave', mouseLeave);
+        btn.current.removeEventListener('click', click);
       }
     };
   }, []);

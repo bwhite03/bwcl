@@ -1,0 +1,15 @@
+.icon-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.icon-div {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+.icon-div label {
+  text-align: left;
+}
