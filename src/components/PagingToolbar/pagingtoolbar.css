@@ -1,0 +1,63 @@
+.paging-toolbar-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-left: 10px;
+}
+
+.paging-toolbar-current-page {
+  max-width: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  background-clip: padding-box;
+  border: 1px solid #c1d1d7;
+  border-color: #2b3553;
+  border-radius: 0.428rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+}
+
+.paging-toolbar-current-page:focus {
+  border-color: #446fd4 !important;
+  outline-width: 0;
+}
+
+.paging-button {
+  cursor: pointer;
+}
+
+.paging-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.paging-summary {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.paging-records-per-page {
+  max-width: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  background-clip: padding-box;
+  border: 1px solid #c1d1d7;
+  border-color: #2b3553;
+  border-radius: 0.428rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+}
+
+.paging-records-per-page:focus {
+  border-color: #446fd4;
+  outline-width: 0;
+}

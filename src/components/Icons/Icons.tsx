@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { TypeOptions, Theme } from "../../types";
-import { Default } from "../../utils";
+import { TypeOptions, Theme } from '../../types';
 
 export interface IconProps {
   theme: Theme;
@@ -16,10 +15,25 @@ const Svg: React.FC<BuildInIconProps> = ({ theme, type, ...rest }) => (
     width="100%"
     height="100%"
     fillOpacity={
-      theme === "colored"
-        ? "currentColor"
+      theme === 'colored'
+        ? 'currentColor'
         : `var(--toastify__toast-icon-color-${type})`
     }
+    {...rest}
+  />
+);
+
+const Svg32: React.FC<BuildInIconProps> = ({ theme, type, ...rest }) => (
+  <svg
+    viewBox="0 0 32 32"
+    width="100%"
+    height="100%"
+    fillOpacity={
+      theme === 'colored'
+        ? 'currentColor'
+        : `var(--toastify__toast-icon-color-${type})`
+    }
+    {...rest}
   />
 );
 
@@ -55,9 +69,87 @@ function Error(props: BuildInIconProps) {
   );
 }
 
+function Backward(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M18 5v10l10-10v22l-10-10v10l-11-11z" />
+    </Svg32>
+  );
+}
+
+function Forward(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M16 27v-10l-10 10v-22l10 10v-10l11 11z" />
+    </Svg32>
+  );
+}
+
+function Next(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M24 4v24h-4v-11l-10 10v-22l10 10v-11z" />
+    </Svg32>
+  );
+}
+
+function Previous(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M8 28v-24h4v11l10-10v22l-10-10v11z" />
+    </Svg32>
+  );
+}
+
+function CircleLeft(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13z" />
+      <path d="M20.914 9.914l-2.829-2.829-8.914 8.914 8.914 8.914 2.828-2.828-6.086-6.086z" />
+    </Svg32>
+  );
+}
+
+function CircleRight(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z" />
+      <path d="M11.086 22.086l2.829 2.829 8.914-8.914-8.914-8.914-2.828 2.828 6.086 6.086z" />
+    </Svg32>
+  );
+}
+
+function CircleNext(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zM16 29c7.18 0 13-5.82 13-13s-5.82-13-13-13-13 5.82-13 13 5.82 13 13 13z" />
+      <path d="M18 16l-8-6v12z" />
+      <path d="M22 10h-4v12h4v-12z" />
+    </Svg32>
+  );
+}
+
+function CirclePrevious(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+      <path d="M14 16l8-6v12z" />
+      <path d="M10 10h4v12h-4v-12z" />
+    </Svg32>
+  );
+}
+
 export const Icons = {
   info: Info,
   warning: Warning,
   success: Success,
   error: Error,
+  backward: Backward,
+  forward: Forward,
+  previous: Previous,
+  next: Next,
+  circleLeft: CircleLeft,
+  circleRight: CircleRight,
+  circleNext: CircleNext,
+  circlePrevious: CirclePrevious,
 };

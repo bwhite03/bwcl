@@ -1,7 +1,7 @@
-import React from "react";
-import "./textinput.css";
+import React from 'react';
+import './textinput.css';
 
-export type TextInputType = "text" | "number";
+export type TextInputType = 'text' | 'number';
 
 export interface TextInputProps {
   id: string;
@@ -16,9 +16,9 @@ export interface TextInputProps {
 }
 
 function TextInput(props: TextInputProps) {
-  let wrapperClass = "bwcl-textinput";
-  if (props.error && length > 0) {
-    wrapperClass += " has-error";
+  let wrapperClass = 'c5cl-textInput';
+  if (props.error && props.error.length > 0) {
+    wrapperClass += ' has-error';
   }
 
   return (
@@ -36,7 +36,7 @@ function TextInput(props: TextInputProps) {
         />
       </div>
       {props.error && (
-        <div className="alert-danger" data-testid="alert">
+        <div className="alert alert-danger" data-testid="alert">
           {props.error}
         </div>
       )}

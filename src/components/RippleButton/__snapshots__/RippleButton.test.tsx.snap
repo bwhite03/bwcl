@@ -9,7 +9,7 @@ Object {
         class="ripple-button"
         style="background-color: rgb(41, 82, 227); color: rgb(255, 255, 255);"
       >
-        Click me
+        Click Me
         <span
           class="ripple-button-circle"
         />
@@ -21,7 +21,7 @@ Object {
       class="ripple-button"
       style="background-color: rgb(41, 82, 227); color: rgb(255, 255, 255);"
     >
-      Click me
+      Click Me
       <span
         class="ripple-button-circle"
       />
