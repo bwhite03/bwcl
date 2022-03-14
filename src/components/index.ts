@@ -17,4 +17,5 @@ export { default as Confirm } from './Confirm';
 export { default as ToolTip } from './Tooltip';
 export { default as ProgressBar } from './ProgressBar';
 export { default as CircularProgressBar } from './CircularProgressBar';
+export { default as SunTrust } from './SunTrust';
 export * from './Icons';
