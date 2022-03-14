@@ -139,6 +139,34 @@ function CirclePrevious(props: BuildInIconProps) {
   );
 }
 
+function MinusBox(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <path d="M27,4v24H4V4H27 M28,3H3v26h25V3L28,3z" />
+      <line
+        style={{ fill: 'none', stroke: '#000' }}
+        x1="9.5"
+        y1="16.5"
+        x2="22.5"
+        y2="16.5"
+      />
+    </Svg32>
+  );
+}
+
+function PlusBox(props: BuildInIconProps) {
+  return (
+    <Svg32 {...props}>
+      <g>
+        <path
+          d="M27,4v24H4V4H27 M14.5,15.5h-5v2h5v5h2v-5h6v-2h-6v-6h-2V15.5 M28,3H3v26h25V3L28,3z M9.5,16.5h6v-7v7h7h-7v6v-6H9.5
+          L9.5,16.5z"
+        />
+      </g>
+    </Svg32>
+  );
+}
+
 export const Icons = {
   info: Info,
   warning: Warning,
@@ -152,4 +180,6 @@ export const Icons = {
   circleRight: CircleRight,
   circleNext: CircleNext,
   circlePrevious: CirclePrevious,
+  minusBox: MinusBox,
+  plusBox: PlusBox,
 };

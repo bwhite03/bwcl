@@ -18,4 +18,5 @@ export { default as ToolTip } from './Tooltip';
 export { default as ProgressBar } from './ProgressBar';
 export { default as CircularProgressBar } from './CircularProgressBar';
 export { default as SunTrust } from './SunTrust';
+// export { default as Tree1 } from './Tree1';
 export * from './Icons';

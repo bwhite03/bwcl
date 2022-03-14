@@ -1,0 +1,26 @@
+.bwcl-treeview {
+  border: 1px solid #000;
+  border-radius: 10px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background-color: #307fb0;
+  color: #fff;
+}
+
+ul,
+#bwUL {
+  list-style-type: none;
+}
+
+#bwUL {
+  margin: 0;
+  padding: 0;
+}
+
+.tree-active {
+  display: block;
+}
+
+.tree-nested {
+  display: none !important;
+}
