@@ -19,7 +19,9 @@ export interface Tree2Props {
 }
 
 const Tree2 = (props: Tree2Props) => {
-  const [collapsedNodes, setCollapsedNodes] = useState<string>('');
+  const [collapsedNodes, setCollapsedNodes] = useState<string[]>([]);
+  const [collapseAll, setCollapseAll] = useState(false);
+
   let nodeId = 0;
   const { minusBox: MinusBox, plusBox: PlusBox } = Icons;
 
@@ -27,6 +29,28 @@ const Tree2 = (props: Tree2Props) => {
   const isBoolean = (value: any) => typeof value === 'boolean';
   const isString = (value: any) => typeof value === 'string';
   const isObject = (value: any) => typeof value === 'object';
+
+  const handleCollapseParent = () => {
+    setCollapseAll(!collapseAll);
+  };
+
+  const handleCollapseChildren = (
+    e: React.MouseEvent<HTMLElement>,
+    nodeId: number
+  ) => {
+    if (collapsedNodes.includes(nodeId)) {
+      const filteredNodes = collapsedNodes.filter((number) => {
+        return number !== nodeId;
+      });
+      setCollapsedNodes(filteredNodes);
+    } else {
+      setCollapsedNodes([...collapsedNodes, nodeId]);
+    }
+  };
+
+  const includesNodeId = (nodeId: number) => {
+    return collapsedNodes.includes(nodeId);
+  };
 
   const processObject = (object: object) =>
     Object.keys(object).map((key, idx) => {
@@ -40,8 +64,13 @@ const Tree2 = (props: Tree2Props) => {
 
   const buildArray = (object: object, key: string, arrIdx: number) => {
     nodeId++;
+
     return (
-      <div id={nodeId} key={`a-${arrIdx}`} className="tree-active">
+      <div
+        id={nodeId}
+        key={`a-${arrIdx}`}
+        className={includesNodeId(nodeId) ? 'tree-nested' : 'tree-active'}
+      >
         <span style={{ paddingLeft: '40px' }}>{`"${key}"`}</span>
         <MinusBox
           theme="dark"
@@ -54,6 +83,7 @@ const Tree2 = (props: Tree2Props) => {
             marginRight: '20px',
             transform: 'translateY(5px) translateX(10px)',
           }}
+          onClick={(e) => handleCollapseChildren(e, nodeId)}
           onMouseOver={(e) => hoverEnter(e)}
           onMouseLeave={(e) => hoverLeave(e)}
         />
@@ -66,7 +96,7 @@ const Tree2 = (props: Tree2Props) => {
 
   const processArrayObject = (object: object, key: string) => {
     const value = object[key];
-    nodeId++;
+
     return (
       <div
         id={`aodiv-${key}`}
@@ -74,8 +104,13 @@ const Tree2 = (props: Tree2Props) => {
         key={`aodiv-${key}`}
       >
         {object.map((record, idx) => {
+          nodeId++;
           return (
-            <div id={nodeId} className="tree-active" key={`ao-${idx}-${key}`}>
+            <div
+              id={nodeId}
+              className={includesNodeId(nodeId) ? 'tree-nested' : 'tree-active'}
+              key={`ao-${idx}-${key}`}
+            >
               <MinusBox
                 theme="dark"
                 type="dark"
@@ -88,6 +123,7 @@ const Tree2 = (props: Tree2Props) => {
                 }}
                 onMouseOver={(e) => hoverEnter(e)}
                 onMouseLeave={(e) => hoverLeave(e)}
+                onClick={(e) => handleCollapseChildren(e, nodeId)}
               />
               <span style={{ paddingLeft: '45px' }}>&#123;</span>
               {Object.keys(record).map((r, idx) => {
@@ -147,43 +183,52 @@ const Tree2 = (props: Tree2Props) => {
             theme="dark"
             type="dark"
             style={style}
+            onClick={handleCollapseParent}
             onMouseEnter={(e) => hoverEnter(e)}
             onMouseLeave={(e) => hoverLeave(e)}
           />
           [
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1px 1fr',
-              marginTop: '5px',
-            }}
-          >
-            <MinusBox
-              theme="dark"
-              type="dark"
+          {collapseAll === false ? (
+            <div
               style={{
-                height: '18px',
-                width: '18px',
-                paddingLeft: '10px',
-                transform: 'translateY(5px)',
-                marginRight: '5px',
-                cursor: 'pointer',
-                userSelect: 'none',
-                zIndex: '999',
+                display: 'grid',
+                gridTemplateColumns: '1px 1fr',
+                marginTop: '5px',
               }}
-              onMouseEnter={(e) => hoverEnter(e)}
-              onMouseLeave={(e) => hoverLeave(e)}
-            />
-            <div className="tree-active" id="0">
+            >
+              <MinusBox
+                theme="dark"
+                type="dark"
+                style={{
+                  height: '18px',
+                  width: '18px',
+                  paddingLeft: '10px',
+                  transform: 'translateY(5px)',
+                  marginRight: '5px',
+                  cursor: 'pointer',
+                  userSelect: 'none',
+                  zIndex: '999',
+                }}
+                onMouseEnter={(e) => hoverEnter(e)}
+                onMouseLeave={(e) => hoverLeave(e)}
+                onClick={(e) => handleCollapseChildren(e, 0)}
+              />
               <div
-                style={{ paddingLeft: '30px', transform: 'translateY(4px)' }}
+                className={includesNodeId(0) ? 'tree-nested' : 'tree-active'}
+                id="0"
               >
-                &#123;
+                <div
+                  style={{ paddingLeft: '30px', transform: 'translateY(4px)' }}
+                >
+                  &#123;
+                </div>
+                {processObject(props.json)}
+                <div style={{ paddingLeft: '10px' }}>&#125;</div>
               </div>
-              {processObject(props.json)}
-              <div style={{ paddingLeft: '10px' }}>&#125;</div>
             </div>
-          </div>
+          ) : (
+            '...'
+          )}
           ]
         </div>
       </ul>

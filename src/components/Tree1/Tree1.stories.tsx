@@ -24,14 +24,9 @@ const data = {
   id: 1,
 };
 
-const data1 = {
-  error: 0,
-  success: true,
-};
-
 const Template: Story<TreeProps> = (args) => <Tree1 {...args} />;
 
 export const Tree1Example = Template.bind({});
 Tree1Example.args = {
-  json: data1,
+  json: data,
 };
