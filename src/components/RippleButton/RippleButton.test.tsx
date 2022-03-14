@@ -26,10 +26,10 @@ describe('RippleButton', () => {
 
   // test('should unmount', () => {
   //   const testFn = jest.fn();
-  //   const { unmount, container } = render(
+  //   const { unmount, container, getByRole } = render(
   //     <RippleButton text="Click Me" onClick={testFn} />
   //   );
-
-  //   unmount();
+  //   getByRole('');
+  //   // unmount();
   // });
 });

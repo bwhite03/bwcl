@@ -83,6 +83,48 @@ exports[`CircularProgressBar should render with score < 25 1`] = `
 </div>
 `;
 
+exports[`CircularProgressBar should render with score < 75 1`] = `
+<div>
+  <div>
+    <svg
+      class="circular-progress-bar"
+      height="150"
+      width="150"
+    >
+      <circle
+        class="circular-progress-bar-bg"
+        cx="75"
+        cy="75"
+        fill="none"
+        r="67.5"
+        stroke="#ff0000"
+        stroke-width="15"
+      />
+      <circle
+        class="circular-progress-bar-circle"
+        cx="75"
+        cy="75"
+        fill="none"
+        r="67.5"
+        stroke="#f00e0e"
+        stroke-dasharray="424.11500823462205"
+        stroke-dashoffset="127.23450247038662"
+        stroke-width="15"
+        style="transition: stroke-dashoffset 850ms ease-in-out, stroke 500ms linear;"
+      />
+      <text
+        class="circular-progress-bar-percentage"
+        x="75"
+        y="75"
+      >
+        70
+        %
+      </text>
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`CircularProgressBar should render with score > 75 1`] = `
 <div>
   <div>

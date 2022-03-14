@@ -42,6 +42,19 @@ describe('CircularProgressBar', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('should render with score < 75', () => {
+    const { container } = render(
+      <CircularProgressBar
+        progress={70}
+        size={150}
+        strokeWidth={15}
+        circleStrokeOne={'#ff0000'}
+        showPercent={true}
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   test('should render with score < 25', () => {
     const { container } = render(
       <CircularProgressBar
