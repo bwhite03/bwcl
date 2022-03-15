@@ -1,6 +1,6 @@
 {
   "name": "bwcl",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "component library for react",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
