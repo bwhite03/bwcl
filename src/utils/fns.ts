@@ -1,4 +1,4 @@
-import { ToastPosition } from "../types";
+import { ToastPosition } from '../types';
 
 export function generateToastId(): string {
   return (
@@ -8,19 +8,19 @@ export function generateToastId(): string {
 
 export const getToastContainerPosition = (position: ToastPosition) => {
   switch (position) {
-    case "top-right":
-      return "position: fixed; top: 10px; right: 10px";
-    case "top-left":
-      return "position: fixed; top: 10px; left: 10px";
-    case "top-center":
-      return "position: fixed; top: 10px; left: 50%";
-    case "bottom-right":
-      return "position: fixed; bottom: 10px; right: 10px";
-    case "bottom-left":
-      return "position: fixed; bottom: 10px; left: 10px";
-    case "bottom-center":
-      return "position: fixed; bottom: 10px; left: 50%";
+    case 'top-right':
+      return 'position: fixed; top: 10px; right: 10px; z-index: 9999';
+    case 'top-left':
+      return 'position: fixed; top: 10px; left: 10px; z-index: 9999';
+    case 'top-center':
+      return 'position: fixed; top: 10px; left: 50%; z-index: 9999';
+    case 'bottom-right':
+      return 'position: fixed; bottom: 10px; right: 10px; z-index: 9999';
+    case 'bottom-left':
+      return 'position: fixed; bottom: 10px; left: 10px; z-index: 9999';
+    case 'bottom-center':
+      return 'position: fixed; bottom: 10px; left: 50%; z-index: 9999';
     default:
-      return "position: fixed; top: 10px; right: 10px";
+      return 'position: fixed; top: 10px; right: 10px; z-index: 9999';
   }
 };
