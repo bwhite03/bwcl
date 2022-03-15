@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { useToastContainer } from "../../hooks";
-import { toastManager, Event } from "../../core";
-import { Default } from "../../utils";
-import { ToastContainerProps } from "../../interface";
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { useToastContainer } from '../../hooks';
+import { toastManager, Event } from '../../core';
+import { Default } from '../../utils';
+import { ToastContainerProps } from '../../interface';
 import {
   Id,
   NotValidatedToastProps,
   ToastProps,
   ToastContent,
-} from "../../types";
-import Toast from "../Toast";
+} from '../../types';
+import Toast from '../Toast';
 
 const ToastContainer: React.FC<ToastContainerProps> = (props) => {
   const {
-    position = "top-right",
+    position = 'top-right',
     autoCloseSelay,
     showIcons,
     theme,
@@ -26,7 +26,7 @@ const ToastContainer: React.FC<ToastContainerProps> = (props) => {
   const domElement = document.getElementById(portalId);
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
-  let { autoClose } = props;
+  let { autoClose = true } = props;
 
   useEffect(() => {}, [toasts]);
 
@@ -55,8 +55,8 @@ const ToastContainer: React.FC<ToastContainerProps> = (props) => {
             `${Default.CSS_NAMESPACE}__${animation}-exit--${position}`
           );
 
-          toastDiv.style.animationDuration = "1s";
-          toastDiv.style.animationFillMode = "forwards";
+          toastDiv.style.animationDuration = '1s';
+          toastDiv.style.animationFillMode = 'forwards';
 
           // now we can call another setTimeout used to remove the element entirely
           setTimeout(() => {
@@ -107,11 +107,11 @@ const ToastContainer: React.FC<ToastContainerProps> = (props) => {
 };
 
 ToastContainer.defaultProps = {
-  position: "top-right",
+  position: 'top-right',
   autoClose: true,
   autoCloseSelay: 10000,
   showIcons: false,
-  theme: "dark",
+  theme: 'dark',
   showLastOnTop: false,
 };
 

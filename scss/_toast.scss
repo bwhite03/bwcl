@@ -11,6 +11,7 @@
   max-height: $rt-toast-max-height;
   font-family: $rt-font-family;
   cursor: pointer;
+  z-index: 9999;
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
