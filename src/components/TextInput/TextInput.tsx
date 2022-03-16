@@ -7,7 +7,7 @@ export interface TextInputProps {
   id: string;
   name: string;
   label: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: TextInputType;
   placeholder?: string;
   value: string | number;

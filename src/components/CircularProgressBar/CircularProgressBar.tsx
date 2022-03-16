@@ -40,7 +40,7 @@ const CircularProgress = (props: CircularProgressProps) => {
     } else if (progress < 50) {
       setProgressColor('#f59b33');
     } else if (progress < 75) {
-      setProgressColor('#f00e0e');
+      setProgressColor('#daf542');
     }
   }, [setOffset, progress, circumference, offset]);
 

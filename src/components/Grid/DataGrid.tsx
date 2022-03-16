@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import Columns from "./Columns/Columns";
-import Filter from "./Filter/Filter";
-import "./datagrid.css";
+import React, { useState, useEffect, useRef } from 'react';
+import Columns from './Columns/Columns';
+import Filter from './Filter/Filter';
+import './datagrid.css';
 
 export type CustomRenderers<T> = Partial<
   Record<keyof T, (it: T) => React.ReactNode>
@@ -11,24 +11,24 @@ export type PrimitiveType = string | symbol | number | boolean;
 
 export function isPrimitive(value: unknown): value is PrimitiveType {
   return (
-    typeof value === "string" ||
-    typeof value === "number" ||
-    typeof value === "boolean" ||
-    typeof value === "symbol"
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean' ||
+    typeof value === 'symbol'
   );
 }
 
 export type TableHeader<T> = {
   columnName: keyof T;
   title: string;
-  sortable?: "asc" | "desc" | false;
+  sortable?: 'asc' | 'desc' | false;
   visible?: boolean;
   style?: React.CSSProperties;
   width?: number;
   filterable?: boolean;
 };
 
-export type Mode = "light" | "dark";
+export type Mode = 'light' | 'dark';
 
 export interface TableProps<T> {
   data: T[];
@@ -54,35 +54,35 @@ function DataGrid<T>(props: TableProps<T>) {
   const [showColumnsModal, setShowColumnModal] = useState(false);
   const [checkedColumns, setCheckedColumns] = useState<string[]>([]);
   const [filterChecked, setFilterChecked] = useState(false);
-  const [filterColumn, setFilterColumn] = useState<string>("");
+  const [filterColumn, setFilterColumn] = useState<string>('');
   const [showFilter, setShowFilter] = useState(false);
   const [filterStyle, setFilterStyle] = useState<React.CSSProperties>({
-    position: "absolute",
+    position: 'absolute',
   });
   const [checkedFilters, setCheckedFilters] = useState<string[]>([]);
-  const [headerString, setHeaderString] = useState("");
+  const [headerString, setHeaderString] = useState('');
 
-  const { fill, tableClassName = "mikto-table", style, mode = "dark" } = props;
+  const { fill, tableClassName = 'mikto-table', style, mode = 'dark' } = props;
 
   const table = useRef<HTMLTableElement>(null);
-  let draggedId = "";
+  let draggedId = '';
 
   useEffect(() => {
     setFilteredData(props.data);
 
     const stylesheet = document.styleSheets[0];
     try {
-      if (mode === "dark") {
+      if (mode === 'dark') {
         if (table.current) {
-          table.current.style.backgroundColor = "#000";
+          table.current.style.backgroundColor = '#000';
         }
       } else {
         if (table.current) {
-          table.current.style.backgroundColor = "#fff";
+          table.current.style.backgroundColor = '#fff';
         }
       }
     } catch {}
-  }, [mode]);
+  }, [mode, props.data]);
 
   const sortByProperty = (prop: keyof T, asc = 0) => {
     if (!asc) {
@@ -99,18 +99,18 @@ function DataGrid<T>(props: TableProps<T>) {
     columnName: keyof T
   ) => {
     e.preventDefault();
-    console.log("i am sorting");
+    console.log('i am sorting');
     const header = props.headers.find((h) => h.columnName === columnName);
     if (header) {
       if (!header.sortable) {
-        header.sortable = "asc";
+        header.sortable = 'asc';
       }
-      if (header.sortable === "asc") {
-        header.sortable = "desc";
+      if (header.sortable === 'asc') {
+        header.sortable = 'desc';
         const sortedData = props.data.sort(sortByProperty(columnName, 0));
         setFilteredData(sortedData);
       } else {
-        header.sortable = "asc";
+        header.sortable = 'asc';
         const sortedData = props.data.sort(sortByProperty(columnName, 1));
         setFilteredData(sortedData);
       }
@@ -131,10 +131,10 @@ function DataGrid<T>(props: TableProps<T>) {
       const rect = div.getBoundingClientRect();
       const tableRect = table.current.getBoundingClientRect();
       if (rect && tableRect) {
-        const left = e.clientX.toFixed(0).toString() + "px";
-        const top = (rect.top + rect.height).toFixed(0).toString() + "px";
+        const left = e.clientX.toFixed(0).toString() + 'px';
+        const top = (rect.top + rect.height).toFixed(0).toString() + 'px';
         const style = {
-          position: "absolute",
+          position: 'absolute',
           top: top,
           left: left,
         };
@@ -168,20 +168,20 @@ function DataGrid<T>(props: TableProps<T>) {
       const rect = div.getBoundingClientRect();
       const tableRect = table.current.getBoundingClientRect();
       if (rect && tableRect) {
-        const left = (rect.left + rect.width - 75).toFixed(0).toString() + "px";
-        const top = (rect.top + rect.height).toFixed(0).toString() + "px";
+        const left = (rect.left + rect.width - 75).toFixed(0).toString() + 'px';
+        const top = (rect.top + rect.height).toFixed(0).toString() + 'px';
         const style = {
-          position: "absolute",
+          position: 'absolute',
           top: top,
           left: left,
         };
         setFilterStyle({
-          position: "absolute",
-          zIndex: "5",
+          position: 'absolute',
+          zIndex: '5',
           left: left,
           top: top,
-          backgroundColor: "#aaa",
-          padding: "8px",
+          backgroundColor: '#aaa',
+          padding: '8px',
         });
         setShowFilter(!showFilter);
       }
@@ -190,7 +190,7 @@ function DataGrid<T>(props: TableProps<T>) {
 
   const dragStart = (ev: React.DragEvent<HTMLDivElement>) => {
     const id = (ev.target as HTMLDivElement).id;
-    ev.dataTransfer.setData("text/plain", id);
+    ev.dataTransfer.setData('text/plain', id);
     draggedId = id;
   };
 
@@ -198,7 +198,7 @@ function DataGrid<T>(props: TableProps<T>) {
     ev.preventDefault();
     const id = (ev.target as HTMLDivElement).id;
     if (id) {
-      (ev.target as HTMLDivElement).classList.add("mikto-table-drag-over");
+      (ev.target as HTMLDivElement).classList.add('mikto-table-drag-over');
     }
   };
 
@@ -206,18 +206,18 @@ function DataGrid<T>(props: TableProps<T>) {
     ev.preventDefault();
     const id = (ev.target as HTMLDivElement).id;
     if (id) {
-      (ev.target as HTMLDivElement).classList.add("mikto-table-drag-over");
+      (ev.target as HTMLDivElement).classList.add('mikto-table-drag-over');
     }
   };
 
   const dragLeave = (ev: React.DragEvent<HTMLDivElement>) => {
-    (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
+    (ev.target as HTMLDivElement).classList.remove('mikto-table-drag-over');
   };
 
   const drop = (ev: React.DragEvent<HTMLDivElement>) => {
-    (ev.target as HTMLDivElement).classList.remove("mikto-table-drag-over");
+    (ev.target as HTMLDivElement).classList.remove('mikto-table-drag-over');
 
-    const id = ev.dataTransfer.getData("text/plain");
+    const id = ev.dataTransfer.getData('text/plain');
     const originalPosition = id.slice(id.length - 1);
     const header = props.headers[+originalPosition];
     props.headers.splice(+originalPosition, 1);
@@ -233,14 +233,14 @@ function DataGrid<T>(props: TableProps<T>) {
     const dropElementX = ev.clientX;
     const draggable = document.getElementById(id);
     if (draggable) {
-      draggable.classList.remove("mikto-hide-dragged-column");
+      draggable.classList.remove('mikto-hide-dragged-column');
     }
 
     const table = document.getElementById(props.identifier);
     if (table) {
-      const thead = table.querySelector("thead");
+      const thead = table.querySelector('thead');
       if (thead) {
-        const tr = thead.querySelector("tr");
+        const tr = thead.querySelector('tr');
         if (tr) {
           for (let i = 0; i < tr.childNodes.length; i++) {
             const el = tr.childNodes[i];
@@ -260,7 +260,7 @@ function DataGrid<T>(props: TableProps<T>) {
                 );
                 props.headers.splice(+newPosition, 0, header);
                 setRender(!render);
-                draggedId = "";
+                draggedId = '';
                 break;
               } else if (dropElementX <= x2) {
                 if (draggable) {
@@ -269,7 +269,7 @@ function DataGrid<T>(props: TableProps<T>) {
                   );
                   props.headers.splice(+newPosition, 0, header);
                   setRender(!render);
-                  draggedId = "";
+                  draggedId = '';
                   break;
                 }
               }
@@ -296,13 +296,13 @@ function DataGrid<T>(props: TableProps<T>) {
           onDragStart={dragStart}
         >
           <span
-            style={{ width: "80%", cursor: "pointer" }}
+            style={{ width: '80%', cursor: 'pointer' }}
             onClick={(e) => handleSortClick(e, header.columnName)}
           >
             {title}
           </span>
           <span
-            style={{ width: "20%", float: "right", textAlign: "center" }}
+            style={{ width: '20%', float: 'right', textAlign: 'center' }}
             className={`mikto-grid-chevron down`}
             onClick={(e) =>
               handleFilterClick(
@@ -320,9 +320,9 @@ function DataGrid<T>(props: TableProps<T>) {
   }
 
   function renderRow(item: T, id: number) {
-    let rowStyle = "mikto-table-row-light";
-    if (mode === "dark") {
-      rowStyle = "mikto-table-row-dark";
+    let rowStyle = 'mikto-table-row-light';
+    if (mode === 'dark') {
+      rowStyle = 'mikto-table-row-dark';
     }
 
     return (
@@ -344,7 +344,7 @@ function DataGrid<T>(props: TableProps<T>) {
               <td style={header.style} key={`table-td-${i}`}>
                 {isPrimitive(item[header.columnName])
                   ? item[header.columnName]
-                  : ""}
+                  : ''}
               </td>
             );
           }
@@ -388,10 +388,10 @@ function DataGrid<T>(props: TableProps<T>) {
   };
 
   return (
-    <div className={props.className} style={{ ...style, width: "100%" }}>
+    <div className={props.className} style={{ ...style, width: '100%' }}>
       <table
         ref={table}
-        style={{ width: "100%" }}
+        style={{ width: '100%' }}
         className={props.tableClassName}
         id={props.identifier}
       >
