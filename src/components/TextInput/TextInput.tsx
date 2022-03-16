@@ -28,6 +28,7 @@ function TextInput(props: TextInputProps) {
         <input
           id={props.id}
           type={props.type}
+          name={props.name}
           onChange={props.onChange}
           className="form-control"
           value={props.value}
