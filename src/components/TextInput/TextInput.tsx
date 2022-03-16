@@ -13,6 +13,7 @@ export interface TextInputProps {
   value: string | number;
   error?: string;
   readOnly?: boolean;
+  autoComplete?: string;
 }
 
 function TextInput(props: TextInputProps) {
@@ -34,6 +35,7 @@ function TextInput(props: TextInputProps) {
           value={props.value}
           placeholder={props.placeholder}
           readOnly={props.readOnly}
+          autoComplete={props.autoComplete}
         />
       </div>
       {props.error && (
